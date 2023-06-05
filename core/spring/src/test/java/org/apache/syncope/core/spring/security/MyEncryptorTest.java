@@ -41,9 +41,9 @@ public class MyEncryptorTest {
     }
 
 
-    public String value;
-    public String encoded;
-    public CipherAlgorithm cipherAlgo; // true if valid, fa
+    private String value;
+    private String encoded;
+    private CipherAlgorithm cipherAlgo; // true if valid, fa
 
     private static String valid_str; //valid value
     private static String invalid_str; //invalid value
