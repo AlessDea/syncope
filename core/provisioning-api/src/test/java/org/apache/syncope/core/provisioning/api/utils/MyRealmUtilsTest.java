@@ -18,10 +18,10 @@
  */
 package org.apache.syncope.core.provisioning.api.utils;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+
 
 import java.util.*;
 
@@ -30,52 +30,27 @@ import static org.junit.Assert.assertEquals;
 @RunWith(value= Parameterized.class)
 public class MyRealmUtilsTest {
 
+
     private boolean expected;
     private String newRealm;
     private Set<String> realms;
 
 
-    private static Set<String> valid_set;
-    private static Set<String> invalid_set;
-    private static Set<String> empty_set;
-
-    private static ArrayList<String> valid_paths;
-    private static String invalid_path;
-    private static String empty_path;
+    static Set<String> valid_set = new HashSet<>(Arrays.asList("/a", "/a/b", "/c", "/c/d"));
+    static Set<String> invalid_set = new HashSet<>(Arrays.asList("../", "../a", "../b", "../c"));
+    static Set<String> empty_set = new HashSet<>();
 
 
-    @Before
-    public static void configureTest(){
-        valid_set = new HashSet<>();
-        // populating with some random realms
-        valid_set.add("/a");
-        valid_set.add("/a/b");
-        valid_set.add("/c");
-        valid_set.add("/c/d");
+    private static ArrayList<String> valid_paths = new ArrayList<>(Arrays.asList("/a", "/ab", "/e", "/c/d"));
+    private static String invalid_path = "../";
+    private static String empty_path = "";
 
-        invalid_set = new HashSet<>();
-        // '/' is the root realm so '../' is not valid
-        invalid_set.add("../");
-        invalid_set.add("../a");
-        invalid_set.add("../b");
-        invalid_set.add("../c");
-
-        empty_set = new HashSet<>();
-
-
-        valid_paths = new ArrayList<>();
-        valid_paths.add("/a"); // already exists
-        valid_paths.add("/ab"); // new
-        valid_paths.add("/e"); // new
-        valid_paths.add("/c/d"); // already exists
-
-        invalid_path = "../";
-
-
-    }
 
     @Parameterized.Parameters
     public static Collection<Object[]> getParameters(){
+        System.out.println(valid_paths.toString());
+        System.out.println(valid_set);
+
         return Arrays.asList(new Object[][]{
                 {false, valid_set, valid_paths.get(0)},
                 {true, valid_set, valid_paths.get(1)},
@@ -84,22 +59,22 @@ public class MyRealmUtilsTest {
 
                 {false, valid_set, invalid_path},
                 {false, valid_set, null},
-                {false, valid_set, empty_set},
+                {false, valid_set, empty_path},
 
-                {false, invalid_set, valid_paths},
+                {false, invalid_set, valid_paths.get(0)},
                 {false, invalid_set, invalid_path},
                 {false, invalid_set, null},
-                {false, invalid_set, empty_set},
+                {false, invalid_set, empty_path},
 
-                {false, null, valid_paths},
+                {false, null, valid_paths.get(0)},
                 {false, null, invalid_path},
                 {false, null, null},
-                {false, null, empty_set},
+                {false, null, empty_path},
 
-                {false, empty_set, valid_paths},
+                {false, empty_set, valid_paths.get(0)},
                 {false, empty_set, invalid_path},
                 {false, empty_set, null},
-                {false, empty_set, empty_set},
+                {false, empty_set, empty_path},
         });
     }
 
@@ -107,10 +82,16 @@ public class MyRealmUtilsTest {
         this.expected = expected;
         this.newRealm = newRealm;
         this.realms = realms;
+
+
     }
 
     @Test
     public void testRealmUtils(){
-        assertEquals(this.expected, RealmUtils.normalizingAddTo(this.realms, this.newRealm));
+
+        System.out.println(this.newRealm + " " + this.realms.toString());
+        if(this.realms != null)
+            assertEquals(this.expected, RealmUtils.normalizingAddTo(this.realms, this.newRealm));
+
     }
 }

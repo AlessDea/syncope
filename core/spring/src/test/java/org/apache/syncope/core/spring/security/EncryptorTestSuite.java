@@ -20,11 +20,13 @@
 package org.apache.syncope.core.spring.security;
 
 
+import org.apache.syncope.core.spring.SpringTestConfiguration;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
-@RunWith(value= Suite.class)
-@Suite.SuiteClasses(value={MyEncryptorTest.class})
+@RunWith(Suite.class)
+@Suite.SuiteClasses(value={VerifyTest.class, EncodeTest.class})
 public class EncryptorTestSuite {
 
 }
