@@ -391,7 +391,15 @@ under the License.
     </contributor>
   </contributors>
 
+
   <properties>
+
+    <!-- ISW: sonarcloud my info + Jacoco info -->
+    <sonar.coverage.jacoco.xmlReportPaths>${maven.multiModuleProjectDirectory}/tests-coverage/target/site/jacoco-aggregate/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+    <sonar.organization>alessdea</sonar.organization>
+    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+    <!-- ISW -->
+
     <project.build.outputTimestamp>2022-12-26T08:35:28Z</project.build.outputTimestamp>
     <syncope.version>${project.version}</syncope.version>
 
@@ -2176,6 +2184,34 @@ under the License.
         <module>docker</module>
       </modules>
     </profile>
+
+    <!-- ISW Jacoco -->
+    <profile>
+      <id>coverage-profile</id>
+      <properties>
+        <checkstyle.skip>true</checkstyle.skip>
+      </properties>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>prepare-agent</id>
+                <goals>
+                  <goal>prepare-agent</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
   </profiles>
 
   <modules>
@@ -2188,6 +2224,10 @@ under the License.
     <module>ext</module>
     <module>archetype</module>
     <!--<module>standalone</module>-->
+
+    <!-- ISW -->
+    <module>tests-coverage</module>
+
   </modules>
 
 </project>
