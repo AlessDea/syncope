@@ -185,247 +185,247 @@
         <dependency>
             <groupId>org.apache.syncope.ext.camel</groupId>
             <artifactId>syncope-ext-camel-client-console</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.camel</groupId>
             <artifactId>syncope-ext-camel-common-lib</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.camel</groupId>
             <artifactId>syncope-ext-camel-logic</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.camel</groupId>
             <artifactId>syncope-ext-camel-persistence-api</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.camel</groupId>
             <artifactId>syncope-ext-camel-persistence-jpa</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.camel</groupId>
             <artifactId>syncope-ext-camel-provisioning-api</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.camel</groupId>
             <artifactId>syncope-ext-camel-provisioning</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.camel</groupId>
             <artifactId>syncope-ext-camel-rest-api</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.camel</groupId>
             <artifactId>syncope-ext-camel-rest-cxf</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.elasticsearch</groupId>
             <artifactId>syncope-ext-elasticsearch-client</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.elasticsearch</groupId>
             <artifactId>syncope-ext-elasticsearch-persistence-jpa</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.elasticsearch</groupId>
             <artifactId>syncope-ext-elasticsearch-provisioning-java</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.flowable</groupId>
             <artifactId>syncope-ext-flowable-client-common-ui</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.flowable</groupId>
             <artifactId>syncope-ext-flowable-client-console</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.flowable</groupId>
             <artifactId>syncope-ext-flowable-client-enduser</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.flowable</groupId>
             <artifactId>syncope-ext-flowable-common-lib</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.flowable</groupId>
             <artifactId>syncope-ext-flowable-bpmn</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.flowable</groupId>
             <artifactId>syncope-ext-flowable-logic</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.flowable</groupId>
             <artifactId>syncope-ext-flowable-rest-api</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.flowable</groupId>
             <artifactId>syncope-ext-flowable-rest-cxf</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.oidcc4ui</groupId>
             <artifactId>syncope-ext-oidcc4ui-client-common-ui</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.oidcc4ui</groupId>
             <artifactId>syncope-ext-oidcc4ui-client-console</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.oidcc4ui</groupId>
             <artifactId>syncope-ext-oidcc4ui-client-enduser</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.oidcc4ui</groupId>
             <artifactId>syncope-ext-oidcc4ui-common-lib</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.oidcc4ui</groupId>
             <artifactId>syncope-ext-oidcc4ui-logic</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.oidcc4ui</groupId>
             <artifactId>syncope-ext-oidcc4ui-persistence-api</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.oidcc4ui</groupId>
             <artifactId>syncope-ext-oidcc4ui-persistence-jpa</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.oidcc4ui</groupId>
             <artifactId>syncope-ext-oidcc4ui-provisioning-api</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.oidcc4ui</groupId>
             <artifactId>syncope-ext-oidcc4ui-provisioning-java</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.oidcc4ui</groupId>
             <artifactId>syncope-ext-oidcc4ui-rest-api</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.oidcc4ui</groupId>
             <artifactId>syncope-ext-oidcc4ui-rest-cxf</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.saml2sp4ui</groupId>
             <artifactId>syncope-ext-saml2sp4ui-client-common-ui</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.saml2sp4ui</groupId>
             <artifactId>syncope-ext-saml2sp4ui-client-console</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.saml2sp4ui</groupId>
             <artifactId>syncope-ext-saml2sp4ui-client-enduser</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.saml2sp4ui</groupId>
             <artifactId>syncope-ext-saml2sp4ui-common-lib</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.saml2sp4ui</groupId>
             <artifactId>syncope-ext-saml2sp4ui-logic</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.saml2sp4ui</groupId>
             <artifactId>syncope-ext-saml2sp4ui-persistence-api</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.saml2sp4ui</groupId>
             <artifactId>syncope-ext-saml2sp4ui-persistence-jpa</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.saml2sp4ui</groupId>
             <artifactId>syncope-ext-saml2sp4ui-provisioning-api</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.saml2sp4ui</groupId>
             <artifactId>syncope-ext-saml2sp4ui-provisioning-java</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.saml2sp4ui</groupId>
             <artifactId>syncope-ext-saml2sp4ui-rest-api</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.saml2sp4ui</groupId>
             <artifactId>syncope-ext-saml2sp4ui-rest-cxf</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.scimv2</groupId>
             <artifactId>syncope-ext-scimv2-client-console</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.scimv2</groupId>
             <artifactId>syncope-ext-scimv2-common-lib</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.scimv2</groupId>
             <artifactId>syncope-ext-scimv2-logic</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.scimv2</groupId>
             <artifactId>syncope-ext-scimv2-rest-api</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.scimv2</groupId>
             <artifactId>syncope-ext-scimv2-rest-cxf</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.scimv2</groupId>
             <artifactId>syncope-ext-scimv2-scim-rest-api</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.ext.scimv2</groupId>
             <artifactId>syncope-ext-scimv2-scim-rest-cxf</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <!--<dependency>
             <groupId>org.apache.syncope.fit</groupId>
