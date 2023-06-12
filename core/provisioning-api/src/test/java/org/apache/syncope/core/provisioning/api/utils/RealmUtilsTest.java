@@ -45,6 +45,10 @@ public class RealmUtilsTest {
     static Set<String> empty_set;
 
 
+    private static final String newR1 = "/a/c";
+    private static final String newR2 = "/b";
+    private static final String newR3 = "/b/c";
+
     @BeforeClass
     public static void configure(){
         valid_set = new HashSet<>(Arrays.asList("/a/b", "/c", "/d/e"));
@@ -54,23 +58,25 @@ public class RealmUtilsTest {
     @Parameterized.Parameters
     public static Collection<Object[]> getParameters(){
 
-        String newR1 = "/a/c";
-        String newR2 = "/b";
-        String newR3 = "/b/c";
-        return Arrays.asList(new Object[][]{
-                //exp       realms          newRealm
-                {true, Validity.VALID, newR1},
-                {true, Validity.VALID, newR2},
-                {false, Validity.VALID, newR3},
-                {false, Validity.VALID, null},
-/*
-                {false, Validity.VALID, ""},
-*/
 
-                {true, Validity.EMPTY, newR1},
-                {false, Validity.EMPTY, null},
-/*
+        return Arrays.asList(new Object[][]{
+                //exp      realms     newRealm
+                {true, Validity.VALID, "/a/c"},
+                {true, Validity.VALID, "/b"},
+                {false, Validity.VALID, "/d/e"},
+                {true, Validity.VALID, "/a"},
+                {false, Validity.VALID, null},
+
+
+                /*P.Bug2: these two tests below produce expected output only in case they are run in this order. (read more on the relation)
+                    A dedicated test is done in RealmUtilsEmptySetTest which guarantees the order.
+                {true, Validity.EMPTY, "/a/c"},
+                {false, Validity.EMPTY, null},*/
+
+
+/*              P.Bug1: (read on relation)
                 {false, Validity.EMPTY, ""},
+                {false, Validity.VALID, ""},
 */
         });
     }
@@ -99,7 +105,7 @@ public class RealmUtilsTest {
         System.out.println(this.newRealm + " " + realmss + " --> expected: " + this.expected);
         try {
             res = RealmUtils.normalizingAddTo(realmss, this.newRealm);
-        } catch (Exception e) {
+        } catch (java.lang.NullPointerException e) {
             //e.printStackTrace();
             res = false;
         }

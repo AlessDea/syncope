@@ -1,3 +1,4 @@
+package org.apache.syncope.core.provisioning.api.utils;
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -17,19 +18,28 @@
  * under the License.
  */
 
-package org.apache.syncope.core.provisioning.api.utils;
+import org.junit.Test;
 
-
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
-@RunWith(value= Suite.class)
-@Suite.SuiteClasses(value={RealmUtilsTest.class, RealmUtilsEmptySetTest.class, RealmUtilsSecondTest.class})
-public class RealmUtilsTestSuite {
+public class RealmUtilsEmptySetTest {
+    @Test
+    public void testRealUtilsEmptySet(){
+        Set<String> empty_set = new HashSet<>();
+        boolean res;
 
+        assertTrue(RealmUtils.normalizingAddTo(empty_set, "/a/c"));
+
+        try {
+            res = RealmUtils.normalizingAddTo(empty_set, null);
+        } catch (Exception e) {
+            //e.printStackTrace();
+            res = false;
+        }
+        assertFalse(res);
+    }
 }
