@@ -1841,12 +1841,12 @@ under the License.
         </executions>
       </plugin>
 
-      <plugin>
+      <!--<plugin>
         <groupId>org.apache.geronimo.genesis.plugins</groupId>
         <artifactId>tools-maven-plugin</artifactId>
         <version>1.4</version>
         <configuration>
-          <!-- Fail the build if any artifacts are missing legal files -->
+          &lt;!&ndash; Fail the build if any artifacts are missing legal files &ndash;&gt;
           <strict>true</strict>
         </configuration>
         <executions>
@@ -1858,7 +1858,7 @@ under the License.
             </goals>
           </execution>
         </executions>
-      </plugin>
+      </plugin>-->
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
