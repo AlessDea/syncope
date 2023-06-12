@@ -106,7 +106,7 @@ under the License.
     </plugins>
   </build>
 
-  <!--<profiles>
+  <profiles>
     <profile>
       <id>mutation</id>
       <activation>
@@ -127,20 +127,11 @@ under the License.
 
 
               <targetClasses>
-&lt;!&ndash;
                 <param>org.apache.syncope.core.provisioning.api.utils.RealmUtils</param>
-&ndash;&gt;
-&lt;!&ndash;
-                <param>org.apache.syncope.core.spring.security.Encryptor</param>
-&ndash;&gt;
               </targetClasses>
               <targetTests>
-&lt;!&ndash;
                 <param>org.apache.syncope.core.provisioning.api.utils.RealmUtilsTestSuite</param>
-&ndash;&gt;
-&lt;!&ndash;
-                <param>org.apache.syncope.core.spring.security.EncryptorTestSuite</param>
-&ndash;&gt;
+
               </targetTests>
               <avoidCallsTo>
                 <avoidCallsTo>org.slf4j</avoidCallsTo>
@@ -159,5 +150,5 @@ under the License.
         </plugins>
       </build>
     </profile>
-  </profiles>-->
+  </profiles>
 </project>
