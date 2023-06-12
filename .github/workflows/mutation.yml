@@ -46,7 +46,7 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
 
       - name: Pitest check
-        run: mvn -B verify -P mutation
+        run: mvn -B verify -P mutation -Dcheckstyle.skip
 
       - name: Add Pit reports
         uses: actions/upload-artifact@v3
