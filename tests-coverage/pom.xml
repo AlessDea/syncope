@@ -20,211 +20,166 @@
         <dependency>
             <groupId>org.apache.syncope.client.am</groupId>
             <artifactId>syncope-client-am-console</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.client.am</groupId>
             <artifactId>syncope-client-am-lib</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.client.idm</groupId>
             <artifactId>syncope-client-idm-console</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.client.idrepo</groupId>
             <artifactId>syncope-client-idrepo-common-ui</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.client.idrepo</groupId>
             <artifactId>syncope-client-idrepo-console</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.client.idrepo</groupId>
             <artifactId>syncope-client-idrepo-enduser</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.client.idrepo</groupId>
             <artifactId>syncope-client-idrepo-lib</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.common.am</groupId>
             <artifactId>syncope-common-am-lib</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.common.am</groupId>
             <artifactId>syncope-common-am-rest-api</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.common.idm</groupId>
             <artifactId>syncope-common-idm-lib</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.common.idm</groupId>
             <artifactId>syncope-common-idm-rest-api</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.common.idrepo</groupId>
             <artifactId>syncope-common-idrepo-lib</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.common.idrepo</groupId>
             <artifactId>syncope-common-idrepo-rest-api</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.common.keymaster</groupId>
             <artifactId>syncope-common-keymaster-client-api</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.common.keymaster</groupId>
             <artifactId>syncope-common-keymaster-client-zookeeper</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.common.keymaster.self</groupId>
             <artifactId>syncope-common-keymaster-client-self</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.common.keymaster.self</groupId>
             <artifactId>syncope-common-keymaster-self-rest-api</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.core.am</groupId>
             <artifactId>syncope-core-am-logic</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.core.am</groupId>
             <artifactId>syncope-core-am-rest-cxf</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.core.idm</groupId>
             <artifactId>syncope-core-idm-logic</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.core.idm</groupId>
             <artifactId>syncope-core-idm-rest-cxf</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.core.idrepo</groupId>
             <artifactId>syncope-core-idrepo-logic</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.core.idrepo</groupId>
             <artifactId>syncope-core-idrepo-rest-cxf</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.core</groupId>
             <artifactId>syncope-core-persistence-api</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.core</groupId>
             <artifactId>syncope-core-persistence-jpa</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.core</groupId>
             <artifactId>syncope-core-persistence-jpa-json</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.core</groupId>
             <artifactId>syncope-core-provisioning-api</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.core</groupId>
             <artifactId>syncope-core-provisioning-java</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.core</groupId>
             <artifactId>syncope-core-self-keymaster-starter</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.core</groupId>
             <artifactId>syncope-core-spring</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.core</groupId>
             <artifactId>syncope-core-starter</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.core</groupId>
             <artifactId>syncope-core-workflow-api</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.core</groupId>
             <artifactId>syncope-core-workflow-java</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.syncope.ext.camel</groupId>
-            <artifactId>syncope-ext-camel-client-console</artifactId>
-            <version>4.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.syncope.ext.camel</groupId>
-            <artifactId>syncope-ext-camel-common-lib</artifactId>
-            <version>4.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.syncope.ext.camel</groupId>
-            <artifactId>syncope-ext-camel-logic</artifactId>
-            <version>4.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.syncope.ext.camel</groupId>
-            <artifactId>syncope-ext-camel-persistence-api</artifactId>
-            <version>4.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.syncope.ext.camel</groupId>
-            <artifactId>syncope-ext-camel-persistence-jpa</artifactId>
-            <version>4.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.syncope.ext.camel</groupId>
-            <artifactId>syncope-ext-camel-provisioning-api</artifactId>
-            <version>4.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.syncope.ext.camel</groupId>
-            <artifactId>syncope-ext-camel-provisioning</artifactId>
-            <version>4.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.syncope.ext.camel</groupId>
-            <artifactId>syncope-ext-camel-rest-api</artifactId>
-            <version>4.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.syncope.ext.camel</groupId>
-            <artifactId>syncope-ext-camel-rest-cxf</artifactId>
             <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
@@ -460,17 +415,17 @@
         <dependency>
             <groupId>org.apache.syncope</groupId>
             <artifactId>syncope-sra</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.wa</groupId>
             <artifactId>syncope-wa-bootstrap</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.syncope.wa</groupId>
             <artifactId>syncope-wa-starter</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
