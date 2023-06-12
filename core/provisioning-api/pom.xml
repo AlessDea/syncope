@@ -105,4 +105,59 @@ under the License.
       </plugin>
     </plugins>
   </build>
+
+  <!--<profiles>
+    <profile>
+      <id>mutation</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <properties>
+        <withHistory>true</withHistory>
+        <pitest.version>1.8.0</pitest.version>
+      </properties>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.pitest</groupId>
+            <artifactId>pitest-maven</artifactId>
+            <version>1.14.0</version>
+            <configuration>
+              <verbose>true</verbose>
+
+
+              <targetClasses>
+&lt;!&ndash;
+                <param>org.apache.syncope.core.provisioning.api.utils.RealmUtils</param>
+&ndash;&gt;
+&lt;!&ndash;
+                <param>org.apache.syncope.core.spring.security.Encryptor</param>
+&ndash;&gt;
+              </targetClasses>
+              <targetTests>
+&lt;!&ndash;
+                <param>org.apache.syncope.core.provisioning.api.utils.RealmUtilsTestSuite</param>
+&ndash;&gt;
+&lt;!&ndash;
+                <param>org.apache.syncope.core.spring.security.EncryptorTestSuite</param>
+&ndash;&gt;
+              </targetTests>
+              <avoidCallsTo>
+                <avoidCallsTo>org.slf4j</avoidCallsTo>
+              </avoidCallsTo>
+            </configuration>
+            <executions>
+              <execution>
+                <id>Mutation report</id>
+                <phase>test-compile</phase>
+                <goals>
+                  <goal>mutationCoverage</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>-->
 </project>

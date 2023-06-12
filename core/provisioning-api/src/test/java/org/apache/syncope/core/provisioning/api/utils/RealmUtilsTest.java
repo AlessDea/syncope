@@ -44,11 +44,6 @@ public class RealmUtilsTest {
     static Set<String> valid_set;
     static Set<String> empty_set;
 
-    private static String newR1 = "/a/c";
-    private static String newR2 = "/b";
-    private static String newR3 = "/b/c";
-
-
 
     @BeforeClass
     public static void configure(){
@@ -59,6 +54,9 @@ public class RealmUtilsTest {
     @Parameterized.Parameters
     public static Collection<Object[]> getParameters(){
 
+        String newR1 = "/a/c";
+        String newR2 = "/b";
+        String newR3 = "/b/c";
         return Arrays.asList(new Object[][]{
                 //exp       realms          newRealm
                 {true, Validity.VALID, newR1},
@@ -84,6 +82,7 @@ public class RealmUtilsTest {
         this.newRealm = newRealm;
 
     }
+
 
     @Test
     public void testRealmUtils(){

@@ -26,7 +26,7 @@ import org.junit.runners.Suite;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses(value={VerifyTest.class, EncodeTest.class})
+@Suite.SuiteClasses(value={VerifyBisTest.class, EncodeTest.class})
 public class EncryptorTestSuite {
 
 }

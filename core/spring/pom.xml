@@ -174,4 +174,58 @@ under the License.
       </resource>
     </resources>
   </build>
+  <profiles>
+    <profile>
+      <id>mutation</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <properties>
+        <withHistory>true</withHistory>
+        <pitest.version>1.8.0</pitest.version>
+      </properties>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.pitest</groupId>
+            <artifactId>pitest-maven</artifactId>
+            <version>1.14.0</version>
+            <!--<dependencies>
+              <dependency>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-junit5-plugin</artifactId>
+                <version>0.14</version>
+              </dependency>
+            </dependencies>-->
+            <configuration>
+              <verbose>true</verbose>
+
+
+              <targetClasses>
+<!--<param>org.apache.syncope.core.provisioning.api.utils.RealmUtils</param>-->
+                <param>org.apache.syncope.core.spring.security.*</param>
+              </targetClasses>
+              <targetTests>
+<!--<param>org.apache.syncope.core.provisioning.api.utils.RealmUtilsTestSuite</param>-->
+                <param>org.apache.syncope.core.spring.security.*</param>
+              </targetTests>
+              <avoidCallsTo>
+                <avoidCallsTo>org.slf4j</avoidCallsTo>
+              </avoidCallsTo>
+            </configuration>
+            <executions>
+              <execution>
+                <id>Mutation report</id>
+                <phase>test-compile</phase>
+                <goals>
+                  <goal>mutationCoverage</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
 </project>

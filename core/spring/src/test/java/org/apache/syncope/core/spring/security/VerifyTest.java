@@ -110,7 +110,6 @@ public class VerifyTest{
     }
 
 
-    @Ignore
     @Test
     public void testVerify(){
         System.out.println(this.encoded + " " + this.value);

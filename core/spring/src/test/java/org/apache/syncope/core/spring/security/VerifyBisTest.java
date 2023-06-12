@@ -153,7 +153,7 @@ public class VerifyBisTest {
                 assertEquals(this.expected, ENCRYPTOR.verify(this.value, this.cipherAlgo, this.encoded));
 
         } catch (UnsupportedEncodingException | NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException | IllegalBlockSizeException | BadPaddingException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
 }

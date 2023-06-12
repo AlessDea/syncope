@@ -20,14 +20,19 @@
 package org.apache.syncope.core.spring.security;
 
 import org.apache.syncope.common.lib.types.CipherAlgorithm;
+import org.apache.syncope.core.provisioning.api.ImplementationLookup;
 import org.apache.syncope.core.spring.ApplicationContextProvider;
 import org.apache.syncope.core.spring.SpringTestConfiguration;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import javax.crypto.BadPaddingException;
@@ -48,9 +53,6 @@ public class EncodeTest {
     static final int PARAMS = 3;
     static final int OTHER_CASES = 3; // number of cases with an invalid string and invalid (null) cipher
 
-    public enum CipherAlgo {
-        VALID, INVALID, NULL,
-    }
 
 
     private String value;
@@ -61,9 +63,18 @@ public class EncodeTest {
     private static Encryptor ENCRYPTOR = Encryptor.getInstance();
     static String valid_str = "thisIsAvalidString"; //valid value
 
+
     @BeforeAll
     public static void configure() {
-        ApplicationContextProvider.getBeanFactory().getSingleton("securityProperties"); //.registerSingleton("securityProperties", new SecurityProperties());
+
+        try {
+            ApplicationContextProvider.getBeanFactory().registerSingleton("securityProperties", new SecurityProperties());
+
+        } catch (Exception e) {
+            //e.printStackTrace();
+            ApplicationContextProvider.getBeanFactory().getSingleton("securityProperties"); //.registerSingleton("securityProperties", new SecurityProperties());
+
+        }
 
     }
 
@@ -87,7 +98,7 @@ public class EncodeTest {
         params[++i] = new Object[]{"FN0NSfsM70DxXlF9hhLitQ==", "", null};
         params[++i] = new Object[]{null, null, null};
 
-        System.out.println("params:" + Arrays.deepToString(params));
+        //System.out.println("params:" + Arrays.deepToString(params));
         return params;
     }
 
@@ -118,7 +129,6 @@ public class EncodeTest {
         this.cipherAlgo = cipherAlgo;
 
     }
-
 
 
     @Test
