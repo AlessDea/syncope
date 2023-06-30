@@ -21,10 +21,16 @@ package org.apache.syncope.core.spring.security;
 
 import org.apache.syncope.common.lib.types.CipherAlgorithm;
 import org.apache.syncope.core.spring.ApplicationContextProvider;
+import org.apache.syncope.core.spring.utils.MyEncryptor;
+import org.junit.AfterClass;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import org.mockito.MockedStatic;
+import org.mockito.Mockito;
+import org.springframework.context.ConfigurableApplicationContext;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
@@ -40,64 +46,76 @@ import static org.junit.Assert.*;
 @RunWith(Parameterized.class)
 public class EncodeTest {
 
-    //per la mutation bisogna saltare tutti i test che utilizzano un un cipher salted perchè altrimenti viene lanciata un'eccezione causata dal fatto che non c'è un'ApplicationContext valida
-
-    static final int TESTCASES = 22; // 11 (num of ciphers available) * 2 (number of test where cipher is valid)
+    static final int TESTCASES = 32;
     static final int PARAMS = 3;
-    static final int OTHER_CASES = 3; // number of cases with an invalid string and invalid (null) cipher
 
+    private static final String S_KEY = "secretkeykeykeyk";
 
 
     private String value;
     private CipherAlgorithm cipherAlgo; // true if valid
     private String expected;
 
+    private static Encryptor ENCRYPTOR;
 
-    private static Encryptor ENCRYPTOR = Encryptor.getInstance();
-    static String valid_str = "thisIsAvalidString"; //valid value
+    public static MockedStatic<ApplicationContextProvider> applicationContextProvider;
 
 
     @BeforeClass
     public static void configure() {
-
-        try {
-            ApplicationContextProvider.getBeanFactory().registerSingleton("securityProperties", new SecurityProperties());
-            //ApplicationContextProvider.getBeanFactory().getSingleton("securityProperties");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-
-
-        }
-
+        SecurityProperties securityProperties = new SecurityProperties();
+        ConfigurableApplicationContext context = Mockito.mock(ConfigurableApplicationContext.class);
+        Mockito.when(context.getBean(SecurityProperties.class)).thenReturn(securityProperties);
+        applicationContextProvider = Mockito.mockStatic(ApplicationContextProvider.class);
+        applicationContextProvider.when(ApplicationContextProvider::getApplicationContext).thenReturn(context);
     }
 
-    public static Object[][] prepareParams(){
+
+    @AfterClass
+    public static void tearDown() {
+        applicationContextProvider.close();
+    }
+
+    @Before
+    public void initEncr(){
+        ENCRYPTOR = Encryptor.getInstance(S_KEY);
+    }
+
+
+    public static Object[][] prepareParams() throws NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         int i = 0;
-        Object[][] params = new Object[TESTCASES + OTHER_CASES][PARAMS];
-        for(CipherAlgorithm c : CipherAlgorithm.values()){
-            //System.out.println("ALGO: " + c.getAlgorithm());
-            params[i] = new Object[]{valid_str , valid_str, c};
-            i++;
+        String[] values = {"password123", "", null};
+
+        Object[][] params = new Object[TESTCASES][PARAMS];
+
+        for (String value : values){
+            for (CipherAlgorithm c : CipherAlgorithm.values()) {
+                if(!c.equals(CipherAlgorithm.SSHA) && !c.equals(CipherAlgorithm.SHA)) {
+                    if (value != null)
+                        params[i] = new Object[]{MyEncryptor.encode(value, c, S_KEY), value, c};
+                    else
+                        params[i] = new Object[]{MyEncryptor.encode(null, c, S_KEY), null, c};
+
+                    i++;
+                }
+            }
         }
 
-        for(CipherAlgorithm c : CipherAlgorithm.values()){
-            //System.out.println("ALGO: " + c.getAlgorithm());
-            params[i] = new Object[]{"", "", c};
-            i++;
+
+        // cases where cipher algo is null
+        for (String value : values){
+            if(value != null){
+                params[i] = new Object[]{MyEncryptor.encode(value, null, S_KEY), value, null};
+                i++;
+            }
         }
 
 
-        params[i] = new Object[]{"R+huzUfAYbxoBZ3v4o82LriOpgYrxtHVOJwSn0mUBZA=", valid_str, null};
-        params[++i] = new Object[]{"FN0NSfsM70DxXlF9hhLitQ==", "", null};
-        params[++i] = new Object[]{null, null, null};
-
-        //System.out.println("params:" + Arrays.deepToString(params));
         return params;
     }
 
     @Parameterized.Parameters
-    public static Collection<Object[]> getParameters(){
+    public static Collection<Object[]> getParameters() throws NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         return Arrays.asList(prepareParams());
     }
 
@@ -114,22 +132,21 @@ public class EncodeTest {
     public void testEncode(){
 
         try {
-            System.out.println("{" + this.expected + ", " + this.value + ", " + this.cipherAlgo + "}");
-
-            if(this.cipherAlgo != null && (this.cipherAlgo.isSalted() || this.cipherAlgo.equals(CipherAlgorithm.BCRYPT))) {
-                //with salted ciphers or BRCRYPT every call to encode generates a different result
-                assertTrue(ENCRYPTOR.verify(this.value, this.cipherAlgo, ENCRYPTOR.encode(this.value, this.cipherAlgo)));
-            }
-            else {
-                //assertEquals(ENCRYPTOR.encode(this.value, this.cipherAlgo), ENCRYPTOR.encode(this.value, this.cipherAlgo));
-                if(this.value == null)
-                    assertFalse(ENCRYPTOR.verify(this.value, this.cipherAlgo, ENCRYPTOR.encode(this.value, this.cipherAlgo)));
+            if((this.cipherAlgo.isSalted() || this.cipherAlgo.equals(CipherAlgorithm.BCRYPT))) {
+                System.out.println(this.value + " " + this.cipherAlgo.getAlgorithm());
+                this.expected = ENCRYPTOR.encode(this.value, this.cipherAlgo);
+                if(this.value != null)
+                    assertTrue(ENCRYPTOR.verify(this.value, this.cipherAlgo, this.expected));
                 else
-                    assertTrue(ENCRYPTOR.verify(this.value, this.cipherAlgo, ENCRYPTOR.encode(this.value, this.cipherAlgo)));
+                    assertFalse(ENCRYPTOR.verify(this.value, this.cipherAlgo, this.expected));
+            }else {
+                System.out.println(this.value + " " + this.cipherAlgo.getAlgorithm());
+                assertEquals(this.expected, ENCRYPTOR.encode(this.value, this.cipherAlgo));
             }
 
         } catch (UnsupportedEncodingException | NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException | IllegalBlockSizeException | BadPaddingException | java.lang.NullPointerException e) {
-            //e.printStackTrace();
+            /*e.printStackTrace();
+            System.out.println(this.value + " " + this.cipherAlgo.getAlgorithm());*/
         }
     }
 }

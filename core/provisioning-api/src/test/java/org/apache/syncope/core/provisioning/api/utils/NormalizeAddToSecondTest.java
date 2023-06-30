@@ -19,24 +19,15 @@
 
 package org.apache.syncope.core.provisioning.api.utils;
 
-import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 
-public class RealmUtilsSecondTest {
-
-
-
-    static Set<String> valid_set;
-    static Set<String> empty_set;
+public class NormalizeAddToSecondTest {
 
 
 
@@ -55,8 +46,6 @@ public class RealmUtilsSecondTest {
         String ns3 = "/d/e";
         Set<String> exp3 = new HashSet<>(Arrays.asList("/a/b", "/c", "/d/e"));
 
-        boolean res;
-
         RealmUtils.normalizingAddTo(set1, ns1);
         assertEquals(set1, exp1);
 
@@ -65,7 +54,6 @@ public class RealmUtilsSecondTest {
 
         RealmUtils.normalizingAddTo(set3, ns3);
         assertEquals(set3, exp3);
-
 
     }
 }

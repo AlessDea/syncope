@@ -131,7 +131,6 @@ under the License.
               </targetClasses>
               <targetTests>
                 <param>org.apache.syncope.core.provisioning.api.utils.RealmUtilsTestSuite</param>
-
               </targetTests>
               <avoidCallsTo>
                 <avoidCallsTo>org.slf4j</avoidCallsTo>

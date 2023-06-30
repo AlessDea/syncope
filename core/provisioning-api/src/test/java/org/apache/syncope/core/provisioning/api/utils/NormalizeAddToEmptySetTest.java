@@ -26,7 +26,8 @@ import java.util.Set;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class RealmUtilsEmptySetTest {
+public class NormalizeAddToEmptySetTest {
+
     @Test
     public void testRealUtilsEmptySet(){
         Set<String> empty_set = new HashSet<>();

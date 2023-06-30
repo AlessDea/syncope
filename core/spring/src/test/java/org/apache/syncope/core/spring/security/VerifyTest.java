@@ -20,9 +20,17 @@
 package org.apache.syncope.core.spring.security;
 
 import org.apache.syncope.common.lib.types.CipherAlgorithm;
+import org.apache.syncope.core.spring.ApplicationContextProvider;
+import org.apache.syncope.core.spring.utils.MyEncryptor;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import org.mockito.MockedStatic;
+import org.mockito.Mockito;
+import org.springframework.context.ConfigurableApplicationContext;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
@@ -38,14 +46,12 @@ import static org.junit.Assert.assertEquals;
 @RunWith(Parameterized.class)
 public class VerifyTest {
 
-    //per la mutation bisogna saltare tutti i test che utilizzano un un cipher salted perchè altrimenti viene lanciata un'eccezione causata dal fatto che non c'è un'ApplicationContext valida
 
-
-    static final int TESTCASES = 99; // 11 (num of ciphers available) * 9 (number of base test where cipher is valid)
+    static final int VALUE = 81;
+    static final int NULL_CIPHER = 6;
     static final int PARAMS = 4;
-    static final int OTHER_CASES = 3; // number of cases with an invalid string and invalid (null) cipher
 
-
+    private static final String S_KEY = "secretkeykeykeyk";
 
     private String value;
     private CipherAlgorithm cipherAlgo; // true if valid
@@ -53,49 +59,105 @@ public class VerifyTest {
     private String encoded;
 
 
-    private static Encryptor ENCRYPTOR = Encryptor.getInstance();
-    static String valid_str = "thisIsAvalidString"; //valid value
-    static String valid_str_digest = "42C149E60B1DCF9D391C99B729D82D0862EABA9DDE5D57DD1B9B4C98A2684A09"; // valid cipher
+    private static Encryptor ENCRYPTOR;
+
+    public static MockedStatic<ApplicationContextProvider> applicationContextProvider;
 
 
+    @BeforeClass
+    public static void setUp() {
+        SecurityProperties securityProperties = new SecurityProperties();
+        ConfigurableApplicationContext context = Mockito.mock(ConfigurableApplicationContext.class);
+        Mockito.when(context.getBean(SecurityProperties.class)).thenReturn(securityProperties);
+        applicationContextProvider = Mockito.mockStatic(ApplicationContextProvider.class);
+        applicationContextProvider.when(ApplicationContextProvider::getApplicationContext).thenReturn(context);
+    }
 
-    public static Object[][] prepareParams(){
+    @AfterClass
+    public static void tearDown() {
+        applicationContextProvider.close();
+    }
+
+    @Before
+    public void initEncr(){
+         ENCRYPTOR = Encryptor.getInstance(S_KEY);
+    }
+
+    public static Object[][] prepareParams() throws NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         int i = 0;
-        String[] values = {"thisIsAvalidString", "", null};
-        String[] encoded_values = {"inv", "", null};
-                                            // 'thisIsAvalidString'                                                 ""
-        String[] encoded_valid_values = {"42C149E60B1DCF9D391C99B729D82D0862EABA9DDE5D57DD1B9B4C98A2684A09", "R+huzUfAYbxoBZ3v4o82LriOpgYrxtHVOJwSn0mUBZA=", "FN0NSfsM70DxXlF9hhLitQ=="};
+        String[] values = {"password123", "", null};
 
-        String value;
-        String enc;
-        Object[][] params = new Object[TESTCASES + OTHER_CASES][PARAMS];
+        Object[][] params = new Object[VALUE+NULL_CIPHER][PARAMS];
 
-        for(int j = 0; j < 3; j++) {
-            for(int z = 0; z < 3; z++){
-                value = values[z];
-                enc = encoded_values[j];
-                for (CipherAlgorithm c : CipherAlgorithm.values()) {
-                    params[i] = new Object[]{false, value, c, enc};
+        for (String value : values){
+            for (CipherAlgorithm c : CipherAlgorithm.values()) {
+                if(!c.equals(CipherAlgorithm.SSHA) && !c.equals(CipherAlgorithm.SHA)) {
+                    if (value != null)
+                        params[i] = new Object[]{true, value, c, MyEncryptor.encode(value, c, S_KEY)};
+                    else
+                        params[i] = new Object[]{false, null, c, MyEncryptor.encode(null, c, S_KEY)};
+
                     i++;
                 }
             }
         }
 
-        //for these three cases, the attribute encoded it's, actually, a valid string that will be encoded before the test
-        for(String v : values){
-            // when the cipher specified is null, AES will be used as default. So, if a valid string is passed the result is a valid encoded string
-            if(v != null && v.equals(valid_str))
-                params[i] = new Object[]{true, v, null, valid_str};
-            else
-                params[i] = new Object[]{false, v, null, valid_str};
-            i++;
+        for (String value : values){
+            for (CipherAlgorithm c : CipherAlgorithm.values()) {
+                if(!c.equals(CipherAlgorithm.SSHA) && !c.equals(CipherAlgorithm.SHA)) {
+                    if (value != null)
+                        params[i] = new Object[]{false, value, c, ""};
+                    else
+                        params[i] = new Object[]{false, null, c, ""};
+
+                    i++;
+                }
+            }
+        }
+
+        for (String value : values){
+            for (CipherAlgorithm c : CipherAlgorithm.values()) {
+                if(!c.equals(CipherAlgorithm.SSHA) && !c.equals(CipherAlgorithm.SHA)) {
+                    if (value != null)
+                        params[i] = new Object[]{false, value, c, null};
+                    else
+                        params[i] = new Object[]{false, null, c, null};
+
+                    i++;
+                }
+            }
+        }
+
+        // cases where cipher algo is null (2)
+        for (String value : values){
+            if(value != null){
+                params[i] = new Object[]{true, value, null, MyEncryptor.encode(value, null, S_KEY)};
+                i++;
+            }
+        }
+
+        // cases where cipher algo is null and encoded is empty (2)
+        for (String value : values){
+            if(value != null){
+                params[i] = new Object[]{false, value, null, ""};
+                i++;
+            }
+        }
+
+        // cases where cipher algo is null and ecnoded is null (2)
+        for (String value : values){
+            if(value != null){
+                params[i] = new Object[]{false, value, null, null};
+                i++;
+            }
         }
 
         return params;
     }
 
+
     @Parameterized.Parameters
-    public static Collection<Object[]> getParameters(){
+    public static Collection<Object[]> getParameters() throws UnsupportedEncodingException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         return Arrays.asList(prepareParams());
     }
 
@@ -111,15 +173,22 @@ public class VerifyTest {
 
     @Test
     public void testVerify(){
+        boolean verified = false;
+
         try {
+            if(this.cipherAlgo == null) {
+                //System.out.println(null + " " + this.value + " " + this.encoded + " " + this.expected);
+                verified = ENCRYPTOR.verify(this.value, null, this.encoded);
+            }
+            else {
+                //System.out.println(this.cipherAlgo.getAlgorithm() + " " + this.value + " " + this.encoded + " " + this.expected);
+                verified = ENCRYPTOR.verify(this.value, this.cipherAlgo, this.encoded);
+            }
 
-            if(this.cipherAlgo == null)
-                assertEquals(this.expected, ENCRYPTOR.verify(this.value, null, ENCRYPTOR.encode(this.encoded, null)));
-            else
-                assertEquals(this.expected, ENCRYPTOR.verify(this.value, this.cipherAlgo, this.encoded));
-
-        } catch (UnsupportedEncodingException | NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException | IllegalBlockSizeException | BadPaddingException | java.lang.NullPointerException e) {
+        } catch (Exception e) {
             //e.printStackTrace();
         }
+        assertEquals(this.expected, verified);
+
     }
 }

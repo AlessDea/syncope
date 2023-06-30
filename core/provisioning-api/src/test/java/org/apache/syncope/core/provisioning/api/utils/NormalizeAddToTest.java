@@ -19,20 +19,23 @@
 
 package org.apache.syncope.core.provisioning.api.utils;
 
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 
 @RunWith(value= Parameterized.class)
-public class RealmUtilsTest {
+public class NormalizeAddToTest {
 
     private enum Validity{
-        VALID, INVALID, EMPTY, NULL
+        FULL, EMPTY, NULL
     }
 
 
@@ -41,17 +44,14 @@ public class RealmUtilsTest {
     private Validity realms;
 
 
-    static Set<String> valid_set;
+    static Set<String> full_set;
     static Set<String> empty_set;
 
 
-    private static final String newR1 = "/a/c";
-    private static final String newR2 = "/b";
-    private static final String newR3 = "/b/c";
 
-    @BeforeClass
-    public static void configure(){
-        valid_set = new HashSet<>(Arrays.asList("/a/b", "/c", "/d/e"));
+    @Before
+    public void configure(){
+        full_set = new HashSet<>(Arrays.asList("/a/b", "/c", "/d/e"));
         empty_set = new HashSet<>();
     }
 
@@ -61,28 +61,25 @@ public class RealmUtilsTest {
 
         return Arrays.asList(new Object[][]{
                 //exp      realms     newRealm
-                {true, Validity.VALID, "/a/c"},
-                {true, Validity.VALID, "/b"},
-                {false, Validity.VALID, "/d/e"},
-                {true, Validity.VALID, "/a"},
-                {false, Validity.VALID, null},
-
-
-                /*P.Bug2: these two tests below produce expected output only in case they are run in this order. (read more on the relation)
-                    A dedicated test is done in RealmUtilsEmptySetTest which guarantees the order.
+                {true, Validity.FULL, "/a/c"},
+                {true, Validity.FULL, "/b"},
+                {false, Validity.FULL, "/d/e"},
+                {true, Validity.FULL, "/a"},
+                //{false, Validity.FULL, ""},
+                {false, Validity.FULL, null},
                 {true, Validity.EMPTY, "/a/c"},
-                {false, Validity.EMPTY, null},*/
+                //{false, Validity.EMPTY, ""},
+                //{false, Validity.EMPTY, null},
+                {false, null, "/a/c"},
+                {false, null, ""},
+                {false, null, null},
 
 
-/*              P.Bug1: (read on relation)
-                {false, Validity.EMPTY, ""},
-                {false, Validity.VALID, ""},
-*/
         });
     }
 
 
-    public RealmUtilsTest(boolean expected, Validity realms, String newRealm) {
+    public NormalizeAddToTest(boolean expected, Validity realms, String newRealm) {
         this.expected = expected;
         this.realms = realms;
         this.newRealm = newRealm;
@@ -96,21 +93,24 @@ public class RealmUtilsTest {
         boolean res;
         Set<String> realmss;
 
-
-        if(this.realms.equals(Validity.VALID))
-            realmss = valid_set;
+        if(this.realms == null){
+            realmss = null;
+        }else if(this.realms.equals(Validity.FULL))
+            realmss = full_set;
         else
             realmss = empty_set;
 
-        System.out.println(this.newRealm + " " + realmss + " --> expected: " + this.expected);
+        System.out.println("'" + this.newRealm + "' " + realmss + " " + " --> expected: " + this.expected);
         try {
             res = RealmUtils.normalizingAddTo(realmss, this.newRealm);
-        } catch (java.lang.NullPointerException e) {
+        } catch (NullPointerException e) {
             //e.printStackTrace();
             res = false;
         }
 
+        System.out.println(realmss);
         assertEquals(this.expected, res);
+
 
     }
 }

@@ -23,13 +23,9 @@ package org.apache.syncope.core.provisioning.api.utils;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-
 
 @RunWith(value= Suite.class)
-@Suite.SuiteClasses(value={RealmUtilsTest.class, RealmUtilsEmptySetTest.class, RealmUtilsSecondTest.class})
+@Suite.SuiteClasses(value={NormalizeAddToTest.class, NormalizeAddToEmptySetTest.class, NormalizeAddToSecondTest.class, NormalizeTest.class})
 public class RealmUtilsTestSuite {
 
 }
