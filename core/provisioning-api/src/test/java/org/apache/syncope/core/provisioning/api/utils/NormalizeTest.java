@@ -35,7 +35,7 @@ import static org.junit.Assert.assertEquals;
 public class NormalizeTest {
 
     private enum Tests {
-        ONE, TWO, THREE, FOUR, FIVE
+        ONE, TWO, THREE, FOUR, FIVE, SIX
     }
 
 
@@ -47,6 +47,8 @@ public class NormalizeTest {
     static java.util.Collection<String> empty_set;
     static java.util.Collection<String> other_set1;
     static java.util.Collection<String> other_set2;
+    static java.util.Collection<String> other_set3;
+
 
     static Set<String> outNormal;
     static Set<String> outGroup;
@@ -61,6 +63,7 @@ public class NormalizeTest {
 
         other_set1 = new HashSet<>(Arrays.asList("g1@/a/b", "g2@/c", "g3@/d/e", "/a/b", "/c", "/d/e",""));
         other_set2 = new HashSet<>(Arrays.asList("g1@/a/b", "g2@/c", "g3@/d/e", ""));
+        other_set3 = new HashSet<>(Arrays.asList("g1@/a/b", "g2@/c", "g3@/d/e", null));
 
         outNormal = new HashSet<>(Arrays.asList("/a/b", "/c", "/d/e"));
         outGroup = new HashSet<>(Arrays.asList("g1@/a/b", "g2@/c", "g3@/d/e"));
@@ -78,11 +81,13 @@ public class NormalizeTest {
 
                 {true, Tests.TWO},
 
-                {true, Tests.THREE},
+                /*{true, Tests.THREE},
 
-           /*     {true, Tests.FOUR},
+                {true, Tests.FOUR},*/
 
-                {true, Tests.FIVE},*/
+                {true, Tests.FIVE},
+
+                /*{true, Tests.SIX},*/
 
         });
     }
@@ -129,6 +134,11 @@ public class NormalizeTest {
                 exp1 = new HashSet<>();
                 exp2 = new HashSet<>();
             }
+            /*case SIX -> {
+                realmss = other_set3;
+                exp1 = new HashSet<>();
+                exp2 = new HashSet<>();
+            }*/
         }
 
         //System.out.println("case: " + this.realms.toString());
